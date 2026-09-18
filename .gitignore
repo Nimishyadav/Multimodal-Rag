@@ -2,6 +2,8 @@ __pycache__/
 *.pyc
 
 storage/
+*.faiss
+*.pkl
 
 venv/
 .env
