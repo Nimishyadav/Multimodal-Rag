@@ -18,17 +18,20 @@
 - Tesseract OCR
 
 ## Project Structure
+## Project Structure
+
+```text
 Multimodal-Rag/
 │
 ├── src/
 ├── data/
 ├── storage/
-├── screenshots/
 ├── chat.py
 ├── ingest.py
 ├── requirements.txt
 ├── README.md
 └── .gitignore
+```
 
 ## Installation
 
