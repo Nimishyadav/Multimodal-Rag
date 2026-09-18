@@ -18,6 +18,17 @@
 - Tesseract OCR
 
 ## Project Structure
+Multimodal-Rag/
+│
+├── src/
+├── data/
+├── storage/
+├── screenshots/
+├── chat.py
+├── ingest.py
+├── requirements.txt
+├── README.md
+└── .gitignore
 
 ## Installation
 
