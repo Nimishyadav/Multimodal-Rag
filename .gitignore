@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+
+storage/
+
+venv/
+.env
+
+*.rar
+*.zip

@@ -1,0 +1,8 @@
+pdfplumber
+pymupdf
+pytesseract
+pillow
+sentence-transformers
+faiss-cpu
+numpy
+ollama
