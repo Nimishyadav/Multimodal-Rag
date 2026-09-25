@@ -1,8 +1,12 @@
 pdfplumber
 pymupdf
-pytesseract
-pillow
 sentence-transformers
 faiss-cpu
 numpy
 ollama
+pyvis
+streamlit
+groq
+python-dotenv
+openpyxl
+mineru>=4,<5

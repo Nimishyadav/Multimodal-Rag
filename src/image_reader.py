@@ -1,12 +1,27 @@
-import pytesseract
-from PIL import Image
+import ollama
+
+VLM_MODEL_NAME = "llava"
 
 
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+def read_image_segments(image_path):
+  
+    response = ollama.chat(
+        model=VLM_MODEL_NAME,
+        messages=[
+            {
+                "role": "user",
+                "content": (
+                    "Describe everything visible in this image in detail. "
+                    "Include any text, labels, numbers, or headings you can "
+                    "read, and explain how different parts of the image "
+                    "relate to each other (e.g. boxes, arrows, sections, "
+                    "flow). Be thorough."
+                ),
+                "images": [image_path]
+            }
+        ],
+        options={"num_predict": 500}
+    )
 
-
-def read_image_text(image_path):
-
-    img = Image.open(image_path)
-    text = pytesseract.image_to_string(img)
-    return text
+    description = response["message"]["content"]
+    return [{"text": description, "type": "IMAGE"}]

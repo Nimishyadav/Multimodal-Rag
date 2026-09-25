@@ -11,3 +11,27 @@ def chunk_text(text, chunk_size=500, overlap=50):
         start += chunk_size - overlap  
 
     return chunks
+
+
+def chunk_segment(segment, source, segment_index, chunk_size=500, overlap=50):
+    """Create provenance-preserving chunks for the shared content list."""
+    chunks = chunk_text(segment["text"], chunk_size=chunk_size, overlap=overlap)
+    modality = segment.get("modality", segment.get("type", "TEXT")).upper()
+    page = segment.get("page")
+    segment_id = segment.get("id", f"{source}:segment:{segment_index}")
+
+    return [
+        {
+            "id": f"{segment_id}:chunk:{chunk_index}",
+            "parent_id": segment_id,
+            "text": text,
+            "source": source,
+            "type": modality,
+            "modality": modality,
+            "page": page,
+            "sheet": segment.get("sheet"),
+            "row_start": segment.get("row_start"),
+            "row_end": segment.get("row_end"),
+        }
+        for chunk_index, text in enumerate(chunks)
+    ]
